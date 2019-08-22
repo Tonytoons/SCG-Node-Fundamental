@@ -1,0 +1,56 @@
+/**
+ * @summary interfaces exported grpc of stock
+ * @author Amarit Jarasjindarat
+ *
+ * Created at : 2019-15-07
+ */
+
+ syntax = "proto3";
+ package stockguide;
+
+ service StockGuide {
+    // Obtains the stock with a given id.
+    rpc GetStock(Id) returns (Stock) {}
+
+    // Obtains the Stocks available with the given Page object.
+    // Results are streamed
+    rpc ListStocks(Page) returns (stream Stock) {}
+}
+
+// Page are represented as index and limit
+message Page {
+    int32 index = 1;
+    int32 limit = 2;
+}
+
+// Id is represented as id string
+message Id {
+    string id = 1;
+}
+
+// Stock is represented as id, name, date, etc.
+message Stock {
+    // The id of the stock.
+    string id = 1;
+
+    // The name of the stock.
+    string name = 2;
+
+    // The Product of the stock.
+    Product product = 3;
+
+    // The date of the stock.
+    int64 date = 4;
+
+    // Product is represented as id, name, count, etc.
+    message Product {
+        // The id of the product.
+        string id = 1;
+
+        // The name of the product.
+        string name = 2;
+
+        // The count of the product. in stock
+        int32 count = 3;
+    }
+}

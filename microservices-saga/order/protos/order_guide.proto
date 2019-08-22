@@ -1,0 +1,86 @@
+/**
+ * @summary interfaces exported grpc of order
+ * @author Amarit Jarasjindarat
+ *
+ * Created at : 2019-15-07
+ */
+
+ syntax = "proto3";
+ package orderguide;
+
+ service OrderGuide {
+    // Obtains the order with a given id.
+    rpc GetOrder(Id) returns (Order) {}
+
+    // Obtains the Orders available with the given Page object.  Results are
+    // streamed rather than returned at once (e.g. in a response message with a
+    // repeated field), as the page there is an index and limit to slice the orders.
+    rpc ListOrders(Page) returns (stream Order) {}
+
+    // Search an order with a given keyword.
+    rpc SearchOrders(Search) returns (stream Order) {}
+
+    // Create an order with a given product.
+    rpc CreateOrder(ProductList) returns (Order) {}
+}
+
+// Page are represented as index and limit
+// Index represent page nummber, such as page 1, 2, etc.
+// Limit represent orders amount to return with the page
+message Page {
+    int32 index = 1;
+    int32 limit = 2;
+}
+
+// Id are represented as id string
+message Id {
+    string id = 1;
+}
+
+// Keyword are represented as id, keyword string
+message Search {
+    string id = 1;
+    string keyword = 2;
+}
+
+// Order are represented as id, name and list of purchase
+message Order {
+    // The id of the order.
+    string id = 1;
+
+    // The name of the order.
+    string name = 2;
+
+    // The Purchase data.
+    repeated Purchase purchases = 3;
+
+    // The Purchase data.
+    repeated Product products = 4;
+
+    // Purchase is represented as id, name
+    message Purchase {
+        // The id of the purchase.
+        string id = 1;
+
+        // The name of the purchase.
+        string name = 2;
+    }
+}
+
+// ProductList are represented as list of product
+message ProductList {
+    // The Product data.
+    repeated Product products = 1;
+}
+
+// Purchase is represented as id, name
+message Product {
+    // The id of the product.
+    string id = 1;
+
+    // The name of the product.
+    string name = 2;
+
+    // The price of the product.
+    int32 price = 3;
+}

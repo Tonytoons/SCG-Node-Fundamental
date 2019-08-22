@@ -1,0 +1,21 @@
+{
+  "name": "scg-services-saga",
+  "version": "0.1.0",
+  "description": "A backend implementation fundamentals",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run dev"
+  },
+  "keywords": [
+    "scg",
+    "backend",
+    "implement",
+    "fundamental"
+  ],
+  "author": "Amarit Jarasjindarat",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.5.1",
+    "grpc": "^1.22.2"
+  }
+}
