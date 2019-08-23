@@ -50,7 +50,7 @@ class SearchPresenter {
                     },
                     filterComplete: function(orders) {
                         console.log('handle filter orders complete')
-                        instance.ctrlPurchase.bundlePurchases(orders, { name: 'user2' })
+                        instance.ctrlPurchase.bundlePurchases(orders)
                         return { done: false, value: orders }
                     },
                     return: function(orders) {
