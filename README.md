@@ -1,1 +1,3 @@
-# SCG-Node-Express-starter-ket
+# SCG-Node-Fundamental
+
+Starter kit with various implementation of NodeJS
