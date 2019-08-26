@@ -1,3 +1,3 @@
 # SCG-Node-Fundamental
 
-Starter kit with various implementation of NodeJS
+Fundamental concept with various implementation of NodeJS
