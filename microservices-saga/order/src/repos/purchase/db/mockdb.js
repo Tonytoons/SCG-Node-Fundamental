@@ -35,6 +35,16 @@
     }
 
     /**
+     * list of orders
+     */
+    list() {
+        setTimeout(() => {
+            const orders = [{ id: 'id1', name: 'user1' }, { id: 'id2', name: 'user2' }]
+            this.events[Symbol.iterator]().ordersFound(orders)
+        }, 1000)
+    }
+
+    /**
      * create a single order
      * @param {*} products list of products
      */

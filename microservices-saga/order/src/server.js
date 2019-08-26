@@ -55,14 +55,17 @@ function getOrder(call, callback) {
  * request property for the request value.
  */
 function listOrders(call) {
-    purchasePresenter.find(call.request.id, function(order, err) {
+    purchasePresenter.list(function(orders, err) {
         if (err) {
             return callback({
                 code: grpc.status.INVALID_ARGUMENT,
                 message: "Length of `Name` cannot be more than 10 characters",
               })
         }
-        callback(null, order)
+        orders.forEach(order => {
+            call.write(order)
+        })
+        call.end()
     })
 }
 

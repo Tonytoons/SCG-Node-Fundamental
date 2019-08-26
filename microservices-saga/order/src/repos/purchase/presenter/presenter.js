@@ -20,10 +20,20 @@ class PurchasePresenter {
     /**
      * find a single order and do business logic in controller
      * @param {*} id of the order
+     * @param {*} callback of the result
      */
     find(id, callback) {
         this.callback = callback
         this.mockdb.retrieve(id)
+    }
+
+    /**
+     * find a list of order and do business logic in controller
+     * @param {*} callback of the result
+     */
+    list(callback) {
+        this.callback = callback
+        this.mockdb.list()
     }
 
     /**
@@ -48,6 +58,11 @@ class PurchasePresenter {
                         console.log('handle order found')
                         order = instance.ctrlPurchase.bundlePurchase(order)
                         return { done: false, value: order }
+                    },
+                    ordersFound: function(orders) {
+                        console.log('handle orders found')
+                        orders = instance.ctrlPurchase.bundlePurchases(orders)
+                        return { done: false, value: orders }
                     },
                     orderNotFound: function(errmsg) {
                         console.log('handle order not found')

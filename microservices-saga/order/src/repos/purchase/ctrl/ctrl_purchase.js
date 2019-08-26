@@ -34,7 +34,7 @@
     bundlePurchases(orders) {
         orders.forEach(order => {
             order.purchases = [{ id: 'purchase_id1', name: 'purchase_name1' },
-                           { id: 'purchase_id2', name: 'purchase_name2' }]
+                               { id: 'purchase_id2', name: 'purchase_name2' }]
         })
         
         this.events[Symbol.iterator]().return(orders)
